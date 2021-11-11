@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from Vendor_Company.media_path_converter import upload_image_path
+from utilities.media_path_converter import upload_image_path
 
 
 
@@ -25,3 +25,7 @@ class Product(models.Model):
    unit           = models.ForeignKey(Product_Unit,on_delete=models.CASCADE)
    product_photo  = models.ImageField(upload_to=upload_image_path,null=True)
    upload_date    = models.DateField(auto_now_add=True)
+
+   def __str__(self):
+      return str(self.title)
+
