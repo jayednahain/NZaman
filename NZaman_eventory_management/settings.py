@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
 
     #main project
+    'Authentication',
     'Products',
     'Customer_data',
     'Vendor_Company',

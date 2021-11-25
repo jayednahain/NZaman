@@ -9,13 +9,17 @@ class Transaction_Method(models.Model):
    class Meta:
       verbose_name_plural="Transaction Method"
 
+   def __str__(self):
+      return str(self.method_name)
+
 class Purchase(models.Model):
-   product = models.ForeignKey(Product,on_delete=models.CASCADE)
-   vendor = models.ForeignKey(Vendor,on_delete=models.CASCADE)
-   quantity = models.FloatField()
-   price = models.FloatField()
-   total_amount = models.FloatField(editable=False,default=0)
-   purchase_date = models.DateTimeField(auto_now_add=True)
+   product            = models.ForeignKey(Product,on_delete=models.CASCADE)
+   vendor             = models.ForeignKey(Vendor,on_delete=models.CASCADE)
+   quantity           = models.FloatField()
+   price              = models.FloatField()
+   transaction_method = models.ForeignKey(Transaction_Method,on_delete=models.CASCADE,null=True,default="None")
+   total_amount       = models.FloatField(editable=False,default=0)
+   purchase_date      = models.DateTimeField(auto_now_add=True)
 
    class Meta:
       verbose_name_plural="Purchase Data"
@@ -47,12 +51,13 @@ class Purchase(models.Model):
 
 
 class Sale(models.Model):
-   product = models.ForeignKey(Product, on_delete=models.CASCADE)
-   customer = models.ForeignKey(customer, on_delete=models.CASCADE)
-   quantity = models.FloatField()
-   price = models.FloatField()
-   total_amount = models.FloatField(editable=False,default=0)
-   sale_date = models.DateTimeField(auto_now_add=True)
+   product            = models.ForeignKey(Product, on_delete=models.CASCADE)
+   customer           = models.ForeignKey(customer, on_delete=models.CASCADE)
+   quantity           = models.FloatField()
+   price              = models.FloatField()
+   total_amount       = models.FloatField(editable=False,default=0)
+   transaction_method = models.ForeignKey(Transaction_Method,on_delete=models.CASCADE,null=True,default="None")
+   sale_date          = models.DateTimeField(auto_now_add=True)
    class Meta:
       verbose_name_plural="Sale Data"
 
@@ -83,14 +88,28 @@ class Sale(models.Model):
 
 
 class Inventory(models.Model):
-   product = models.ForeignKey(Product, on_delete=models.CASCADE)
-   purchase =models.ForeignKey(Purchase, on_delete=models.CASCADE,null=True)
-   sale = models.ForeignKey(Sale, on_delete=models.CASCADE,default=0,null=True)
-   purchase_quantity = models.FloatField(default=0,null=True)
-   sale_quantity = models.FloatField(default=0,null=True)
+   product                = models.ForeignKey(Product, on_delete=models.CASCADE)
+   purchase               =models.ForeignKey(Purchase, on_delete=models.CASCADE,null=True)
+   sale                   = models.ForeignKey(Sale, on_delete=models.CASCADE,default=0,null=True)
+   purchase_quantity      = models.FloatField(default=0,null=True)
+   sale_quantity          = models.FloatField(default=0,null=True)
    total_quantity_balance = models.FloatField(default=0)
-   updated_date = models.DateTimeField(null=True)
+   updated_date           = models.DateTimeField(null=True)
 
+   class Meta:
+      verbose_name_plural = "Inventroy"
+
+   def product_unit(self):
+      if self.purchase:
+         return self.product.unit.title
+
+   def purchase_date(self):
+      if self.purchase:
+         return self.purchase.purchase_date
+
+   def sale_date(self):
+      if self.sale:
+         return self.sale.sale_date
 
 
 

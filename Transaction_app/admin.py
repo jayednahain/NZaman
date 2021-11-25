@@ -3,9 +3,7 @@ from Transaction_app.models import Transaction_Method,Purchase,Sale,Inventory
 
 # Register your models here.
 admin.site.register(Transaction_Method)
-#admin.site.register(Purchase)
-#admin.site.register(Sale)
-#admin.site.register(Inventory)
+
 
 
 @admin.register(Purchase)
@@ -14,11 +12,16 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Inventory)
-class PurchaseAdmin(admin.ModelAdmin):
-   list_display = ['id','product','purchase','sale','purchase_quantity','sale_quantity','total_quantity_balance','updated_date']
 
 
 @admin.register(Sale)
 class PurchaseAdmin(admin.ModelAdmin):
    list_display = ['id','product','customer','quantity','price','total_amount','sale_date']
+
+
+@admin.register(Inventory)
+class PurchaseAdmin(admin.ModelAdmin):
+
+   search_fields = ['product__title'] #passing data base fields look up perameter into the list!
+   list_display = ['id','product','product_unit','purchase_quantity','sale_quantity','total_quantity_balance','updated_date','sale_date','purchase_date']
+
