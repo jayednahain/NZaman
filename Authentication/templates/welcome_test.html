@@ -1,6 +1,32 @@
 {% extends 'bootstrap/cdn.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+
 
 
 {% block body %}
-<h1>you are logged in</h1>
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col">
+                    <div class="see_product rounded-pill">
+                        <a class="welcome_btn" type="submit" href="{% url 'product_gallery_link' %}">See Product</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="see_product rounded-pill">
+                        <a class="welcome_btn" type="submit" href="">Sell Data</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="see_product rounded-pill">
+                        <a class="welcome_btn" type="submit" href="">Buy Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

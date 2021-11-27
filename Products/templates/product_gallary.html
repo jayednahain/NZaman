@@ -1,0 +1,37 @@
+{% extends 'bootstrap/cdn.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container ">
+        <div class="jumbotron">
+          <h1 class="display-4">Product Gallery</h1>
+          <hr class="my-4">
+            <div class="row">
+                {% for data in all_product %}
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                          <img src="{{ data.product_photo.url }}" class="card-img-top card_image" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ data }}</h5>
+                            <a href="{% url 'product_detail_link' data.pk %}" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'bootstrap/cdn.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <div class="container border border-5">
+        <div class="card bg-dark border rounded-pill text-white">
+            <div class="row">
+                <div class="col align-self-start p-3">
+                    <img src="{{ object.product_photo.url }}" class="detail_image card-img" alt="...">
+                </div>
+                <div class="col border m-2">
+                    <h1 class="display-4">{{ object.title }}</h1>
+                    <hr class="my-4">
+                        <table class="table text-white">
+                          <tbody>
+                            <tr>
+                              <td>Title</td>
+                              <td>{{ object.title }}</td>
+                            </tr>
+                            <tr>
+                              <td>Detail</td>
+                              <td>{{ object.detail }}</td>
+                            </tr>
+                            <tr>
+                              <td>Issue Date</td>
+                              <td>{{ object.upload_date }}</td>
+                            </tr>
+                            <tr>
+                              <td>ID</td>
+                              <td>{{ object.pk }}</td>
+                            </tr>
+                            <tr>
+                              <td>Category</td>
+                              <td>{{ object.category }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                </div>
+                <div class="col">
+                    <div class="align-items-center center_total_stock">
+                        <h1 class="display-4">Current Stock</h1>
+                        <h1 class="stock_total_number">{{ total_last_stock }}</h1>
+                    </div>
+                    <div>
+                        Last Update
+                        <p class="update_date">{{ update_date }}</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark border rounded-pill text-white">
+            <div class="row">
+                <div class="col text-center">
+{#                    <h1 class="display-4 text-center"></h1>#}
+                    <div class="card bg-dark border text-white">
+                      <div class="card-header display-5">Current Buy rate</div>
+                      <div class="card-body border">
+                        <h5 class="card-title">Light card title</h5>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col text-center">
+{#                    <h1 class="display-4 cen">Current Sell Rate</h1>#}
+                     <div class="card bg-dark border text-white">
+                      <div class="card-header display-5">Current Buy rate</div>
+                      <div class="card-body border">
+                        <h5 class="card-title">Light card title</h5>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock body %}

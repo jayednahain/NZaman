@@ -1,0 +1,44 @@
+.see_product {
+
+    background: #1FD537;
+    height: 151px;
+    text-align: center;
+    font-size: 60px;
+    position: relative;
+    align-items: center;
+    padding:24px 7px 22px 1px;
+    margin: auto;
+    border-style: inset;
+    transition: 0.5s;
+
+}
+.see_product:hover{
+    font-family: Calibri;
+    background: #00B32C;
+    height: 151px;
+    text-align: center;
+    font-size: 60px;
+    position: relative;
+    align-items: center;
+    padding:24px 7px 22px 1px;
+    margin: auto;
+    border-style: inset;
+
+}
+
+
+.welcome_btn{
+
+    color: azure;
+    position: relative;
+    text-decoration: none;
+    flex: auto;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.welcome_btn:hover{
+    color: azure;
+    transition: 0.5s;
+    font-size:55px;
+}

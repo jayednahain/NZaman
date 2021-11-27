@@ -1,0 +1,41 @@
+.card_image
+{
+    height:300px;
+    width:300px;
+    object-fit: cover;
+}
+
+.detail_image{
+    height:300px;
+    width:300px;
+    object-fit: cover;
+
+}
+
+/*.theme_color*/
+/*{*/
+/*    background: #1FD537;*/
+/*}*/
+
+.detail_table_color
+{
+    background: #00B32C;
+}
+
+.center_total_stock
+{
+    padding-top: 50px;
+}
+
+
+.stock_total_number
+{
+    font-size:120px;
+    padding-left: 10px;
+
+}
+.update_date
+{
+    font-size:0;
+}
+

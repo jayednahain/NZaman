@@ -1,9 +1,11 @@
 from django import forms
-
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+# User = get_user_model()
 
 
 class RegsiterForm(forms.Form):
-   frist_name = forms.CharField(
+   first_name = forms.CharField(
       label= "",
       widget=forms.TextInput(
          attrs={
@@ -58,7 +60,22 @@ class RegsiterForm(forms.Form):
       )
    )
 
-   #two password field valiedation
+
+
+   def clean_username(self):
+      username = self.cleaned_data.get('username')
+      query_data = User.objects.filter(username=username)
+      if query_data.exists():
+         raise forms.ValidationError("this user name already exists")
+
+      return username
+
+   def clean_email(self):
+      email = self.cleaned_data.get('email')
+      query_data = User.objects.filter(email=email)
+      if query_data.exists():
+         raise forms.ValidationError("this user name already exists")
+      return email
 
 
    def clean_frist_name(self):
