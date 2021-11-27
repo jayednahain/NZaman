@@ -2,7 +2,6 @@
 {% load static %}
 {% block head %}
 {% endblock %}
-
 {% block body %}
     <div class="container border border-5">
         <div class="card bg-dark border rounded-pill text-white">
@@ -47,37 +46,59 @@
                         Last Update
                         <p class="update_date">{{ update_date }}</p>
                     </div>
-
-
                 </div>
             </div>
         </div>
         <div class="card bg-dark border rounded-pill text-white">
             <div class="row">
                 <div class="col text-center">
-{#                    <h1 class="display-4 text-center"></h1>#}
                     <div class="card bg-dark border text-white">
                       <div class="card-header display-5">Current Buy rate</div>
                       <div class="card-body border">
-                        <h5 class="card-title">Light card title</h5>
+                          <table class="table text-white">
+                          <tbody>
+                            <tr>
+                              <td>Price</td>
+                              <td>{{ last_pur_rate }}</td>
+                            </tr>
+                              <tr>
+                                  <td>Date</td>
+                                  <td>{{ last_pur_rate_date }}</td>
+                              </tr>
+                              <tr>
+                                  <td>Vendor Name</td>
+                                  <td>{{ last_pur_vendor }}</td>
+                              </tr>
+
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                 </div>
-
                 <div class="col text-center">
-{#                    <h1 class="display-4 cen">Current Sell Rate</h1>#}
                      <div class="card bg-dark border text-white">
                       <div class="card-header display-5">Current Buy rate</div>
                       <div class="card-body border">
-                        <h5 class="card-title">Light card title</h5>
+                           <table class="table text-white">
+                          <tbody>
+                            <tr>
+                              <td>Price</td>
+                              <td>{{ last_sale_rate }}</td>
+                            </tr>
+                              <tr>
+                                  <td>Date</td>
+                                  <td>{{ last_sale_rate_date }}</td>
+                              </tr>
+                            <tr>
+                                  <td>Customer</td>
+                                  <td>{{ last_sale_customer }}</td>
+                              </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
-
-
 {% endblock body %}
